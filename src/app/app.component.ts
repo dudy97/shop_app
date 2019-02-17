@@ -7,4 +7,17 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'shop-app';
+  ifShowReceipes: boolean;
+
+  constructor() {
+    this.ifShowReceipes = true;
+  }
+
+  chooseTab(tabChosen: string) {
+    if (tabChosen === 'receipes') {
+      this.ifShowReceipes = true;
+    } else {
+      this.ifShowReceipes = false;
+    }
+  }
 }

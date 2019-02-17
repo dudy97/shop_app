@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="col-md-5">
+<app-receipe-list>
+
+</app-receipe-list>
+  </div>
+  <div class="col-md-7">
+    <app-receipe-detail *ngIf="tempReceipe; else info" [receipe]="tempReceipe">
+    </app-receipe-detail>
+    <ng-template #info>
+      Please select Recipe for more info!
+    </ng-template>
+  </div>
+</div>
