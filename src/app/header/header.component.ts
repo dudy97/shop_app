@@ -1,4 +1,5 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -6,14 +7,10 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  @Output() valueSelected = new EventEmitter<string>();
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  onNavClick(selected: string) {
-    this.valueSelected.emit(selected);
-  }
 }

@@ -1,7 +1,9 @@
 import {Receipe} from '../content/receipe_book/receipes/receipe.model';
-import {EventEmitter} from '@angular/core';
+import {EventEmitter, Injectable} from '@angular/core';
 import {Ingredient} from '../shared/ingredient-model';
+import {ShoppingListService} from './shopping-list.service';
 
+@Injectable()
 export class ReceipeService {
   selectedReceipe = new EventEmitter<Receipe>();
   private receipes: Receipe[] = [
@@ -17,7 +19,13 @@ export class ReceipeService {
       new Ingredient('Ketchup', 1)])
   ];
 
+  constructor(private shoppingListService: ShoppingListService) {}
+
   getReceipes() {
     return this.receipes.slice();
+  }
+
+  sendIngredients(ingredients: Ingredient[]) {
+    this.shoppingListService.addIngredientsFromReceipe(ingredients);
   }
 }

@@ -16,4 +16,7 @@ export class ReceipeDetailComponent implements OnInit {
 
   }
 
+  onAddToShoppingList() {
+    this.receipeService.sendIngredients(this.receipe.ingredients);
+  }
 }
