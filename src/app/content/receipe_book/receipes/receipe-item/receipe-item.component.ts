@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Receipe} from '../receipe.model';
 import {ReceipeService} from '../../../../service/receipe.service';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-receipe-item',
@@ -8,14 +9,13 @@ import {ReceipeService} from '../../../../service/receipe.service';
   styleUrls: ['./receipe-item.component.css']
 })
 export class ReceipeItemComponent implements OnInit {
-  @Input() receipe: Receipe;
+  @Input()receipe: Receipe;
+  @Input() index: number;
 
-  constructor(private receipeService: ReceipeService) { }
+  constructor(private receipeService: ReceipeService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
+
   }
 
-  onItemClicked() {
-    this.receipeService.selectedReceipe.emit(this.receipe);
-  }
 }

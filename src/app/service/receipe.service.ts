@@ -2,6 +2,7 @@ import {Receipe} from '../content/receipe_book/receipes/receipe.model';
 import {EventEmitter, Injectable} from '@angular/core';
 import {Ingredient} from '../shared/ingredient-model';
 import {ShoppingListService} from './shopping-list.service';
+import {forEach} from '@angular/router/src/utils/collection';
 
 @Injectable()
 export class ReceipeService {
@@ -27,5 +28,18 @@ export class ReceipeService {
 
   sendIngredients(ingredients: Ingredient[]) {
     this.shoppingListService.addIngredientsFromReceipe(ingredients);
+  }
+
+  getReceipe(name: String) {
+    let recipe;
+    for (recipe in this.receipes) {
+      if (recipe.name === name) {
+        return recipe;
+      }
+    }
+  }
+
+  getReceipeById(id: number) {
+    return this.receipes[id];
   }
 }
